@@ -68,7 +68,7 @@ import { create } from "zustand";
 // Define the backend URL based on the environment
 const API_URL = process.env.NODE_ENV === 'production'
   ? 'https://flix-lake.vercel.app/' // Replace with your Render backend URL
-  : 'http://localhost:5000';
+  : 'http://localhost:5000'  ;
 
 export const useAuthStore = create((set) => ({
   user: null,

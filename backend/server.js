@@ -31,16 +31,11 @@
 //   connectDB();
 // });
 import express from "express";
-import cookieParser from "cookie-parser";
 import cors from "cors"; // Import CORS
-import authroutes from "./routes/auth-routes.js";
-import movieroutes from "./routes/movie-routes.js";
-import tvroutes from "./routes/tv-routes.js";
-import personroutes from './routes/person-routes.js';
-import searchroutes from "./routes/search-routes.js";
+import cookieParser from "cookie-parser";
+import authRoutes from "./routes/auth-routes.js";
 import { ENV_variables } from "./config/envVariables.js";
 import { connectDB } from "./config/db.js";
-import { protectRoute } from "./middleware/protectRoute.js";
 import path from "path";
 
 const app = express();
@@ -49,19 +44,15 @@ const PORT = ENV_variables.PORT;
 
 // Enable CORS
 app.use(cors({
-  origin: 'https://flix-maniac.vercel.app', // Replace with your frontend URL
+  origin: 'https://flix-lake.vercel.app/', // Replace with your frontend URL
   credentials: true, // Allow cookies to be sent
 }));
 
-app.use(express.json()); // Will allow us to parse req.body
+app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/api/v1/auth", authroutes);
-app.use("/api/v1/movie", protectRoute, movieroutes);
-app.use("/api/v1/tv", protectRoute, tvroutes);
-app.use("/api/v1/person", protectRoute, personroutes);
-app.use("/api/v1/search", protectRoute, searchroutes);
+app.use("/api/v1/auth", authRoutes);
 
 // Serve frontend in production
 if (ENV_variables.NODE_ENV === "production") {
