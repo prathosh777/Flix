@@ -44,7 +44,7 @@ const PORT = ENV_variables.PORT;
 
 // Enable CORS
 app.use(cors({
-  origin: 'https://flix-lake.vercel.app/', // Replace with your frontend URL
+  origin: 'https://flix-lake.vercel.app/', 
   credentials: true, // Allow cookies to be sent
 }));
 
